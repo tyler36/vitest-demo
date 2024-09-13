@@ -1,0 +1,20 @@
+stages:
+  - test
+
+cache:
+  paths:
+    - node_modules/
+
+vitest:
+  stage: test
+  image: node:20-alpine
+  before_script:
+    - npm ci
+  script: |
+    npm run test:coverage
+  artifacts:
+    paths:
+      - logs/vitest*
+    reports:
+      junit: logs/vitest-junit.xml
+      codequality: logs/vitest.json
