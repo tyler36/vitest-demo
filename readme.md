@@ -7,6 +7,7 @@
 - [Usage](#usage)
 - [Configuration](#configuration)
   - [Coverage](#coverage)
+  - [GitHub action](#github-action)
 
 ## Overview
 
@@ -103,3 +104,18 @@ To run with coverage:
 ```
 
 Use `--coverage.reportOnFailure` or the configuration equivalent to generate coverage even when tests fail.
+
+### GitHub action
+
+Vitest includes a GitHub action reporter.
+It is automatically enabled in the report group `default` when `process.env.GITHUB_ACTIONS === 'true'`.
+
+If you override `test.reports`, you can manually enable it as follows:
+
+```js
+process.env.GITHUB_ACTIONS === 'true'export default defineConfig({
+  test: {
+    reporters: process.env.GITHUB_ACTIONS ? ['dot', 'github-actions'] : ['dot'],
+  },
+}
+```
