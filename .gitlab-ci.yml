@@ -12,8 +12,9 @@ vitest:
     - npm ci
   script: |
     npm run test:coverage
-  # artifacts:
-  #   paths:
-  #     - logs/vitest-junit.xml
-  #   reports:
-  #     junit: logs/vitest-junit.xml
+  artifacts:
+    paths:
+      - logs/vitest*
+    reports:
+      junit: logs/vitest-junit.xml
+      codequality: logs/vitest.json
