@@ -9,6 +9,8 @@
   - [Coverage](#coverage)
   - [Snapshots](#snapshots)
     - [Property matchers](#property-matchers)
+  - [Mocking](#mocking)
+  - [Checking errors](#checking-errors)
   - [GitHub action](#github-action)
 
 ## Overview
@@ -177,6 +179,31 @@ exports[`will check the matchers and pass 1`] = `
   "name": "LeBron James",
 }
 `;
+```
+
+### Mocking
+
+Use [`vitest-fetch-mock`](https://github.com/IanVS/vitest-fetch-mock) to mock fetch requests.
+
+### Checking errors
+
+```js
+function getFruitStock(type) {
+  if (type === 'pineapples'){
+    throw new Error('Pineapples are not in stock')
+  }
+  // Do some other stuff
+}
+
+test('throws on pineapples', () => {
+  // You can also use regex. For example: (/stock/)
+  expect(() => getFruitStock('pineapples')).toThrowError('stock')
+
+  // Test the exact error message
+  expect(() => getFruitStock('pineapples')).toThrowError(
+    /^Pineapples are not in stock$/,
+  )
+})
 ```
 
 ### GitHub action
