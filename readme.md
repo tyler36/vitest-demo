@@ -11,26 +11,26 @@
     - [Property matchers](#property-matchers)
   - [Mocking](#mocking)
   - [Checking errors](#checking-errors)
-  - [GitHub action](#github-action)
+  - [GitHub Action](#github-action)
 
 ## Overview
 
-[Vitest](https://vitest.dev/guide/) is JavaScript testing framework, similar to [Jest](https://jestjs.io/).
-It is a next-generation testing framework, based on Vite, and emphasizes speed.
+[Vitest](https://vitest.dev/guide/) is JavaScript testing framework, an alternative to [Jest](https://jestjs.io/).
+Vitest a next-generation testing framework, based on Vite, and emphasizes speed.
 
 - Supports TypeScript
-- (mostly) compatible with Jest API
+- Compatible with Jest API
 
 > [!WARNING]
 > [Vite CJS Node API deprecated](https://vitejs.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated)
 
 ### Vitest vs. Jest
 
-- if your project uses Vite, Vitest can re-use the same pipeline
-- native TypeScript support
+- If your project uses Vite, Vitest can re-use the same pipeline
+- Native TypeScript support
 - "compatibility with most of the Jest API and ecosystem libraries"
 
-@see <https://vitest.dev/guide/comparisons.html#jest>
+@see <https://vitest.dev/guide/comparisons.html#Jest>
 
 ## Setup
 
@@ -81,7 +81,7 @@ npm install -D vitest
 Vitest supports Native code coverage via
 
 - [v8](https://v8.dev/blog/javascript-code-coverage) (default) and
-- instrumented code coverage via [istanbul](https://istanbul.js.org/).
+- Instrumented code coverage via [istanbul](https://istanbul.js.org/).
 
 Update `vitest.config.ts` to specify `instanbul`, if required.
 Vite will nudge you to install the coverage package if it can not find it.
@@ -110,7 +110,7 @@ To run with coverage:
 }
 ```
 
-Use `--coverage.reportOnFailure` or the configuration equivalent to generate coverage even when tests fail.
+Use `--coverage.reportOnFailure` or set in configuration to generate coverage even when tests fail.
 
 ### Snapshots
 
@@ -121,10 +121,9 @@ This is helpful to check that data does not change, while also recording expecte
   expect(data).toMatchSnapshot()
   ```
 
-On first run, Vitest will save the data to a file.
-Subsequent runs will attempt to match against it.
+On first run, Vitest will save the data to a file, later runs will attempt to match against it.
 
-Vitest uses a `snap` format which may not be desireable.
+Vitest uses a `snap` format which may not be desirable.
 Use `.toMatchSnapshotFile()` to specify a filename.
 
 Use `vitest -u` to update snapshots.
@@ -206,12 +205,12 @@ test('throws on pineapples', () => {
 })
 ```
 
-### GitHub action
+### GitHub Action
 
-Vitest includes a GitHub action reporter.
-It is automatically enabled in the report group `default` when `process.env.GITHUB_ACTIONS === 'true'`.
+Vitest includes a GitHub Action reporter.
+Vitest automatically enables GitHub reporter in the report group `default` when `process.env.GITHUB_ACTIONS === 'true'`.
 
-If you override `test.reports`, you can manually enable it as follows:
+If you override `test.reports`, manually enable it as follows:
 
 ```js
 process.env.GITHUB_ACTIONS === 'true'export default defineConfig({
