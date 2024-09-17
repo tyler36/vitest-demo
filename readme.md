@@ -7,6 +7,8 @@
 - [Usage](#usage)
 - [Configuration](#configuration)
   - [Coverage](#coverage)
+  - [Snapshots](#snapshots)
+    - [Property matchers](#property-matchers)
   - [GitHub action](#github-action)
 
 ## Overview
@@ -107,6 +109,75 @@ To run with coverage:
 ```
 
 Use `--coverage.reportOnFailure` or the configuration equivalent to generate coverage even when tests fail.
+
+### Snapshots
+
+Snapshots allow you to capture information in a file and match against it.
+This is helpful to check that data does not change, while also recording expected behavior.
+
+  ```js
+  expect(data).toMatchSnapshot()
+  ```
+
+On first run, Vitest will save the data to a file.
+Subsequent runs will attempt to match against it.
+
+Vitest uses a `snap` format which may not be desireable.
+Use `.toMatchSnapshotFile()` to specify a filename.
+
+Use `vitest -u` to update snapshots.
+
+#### Property matchers
+
+To match against dynamic data-types (`id`, `createdAt`), use property matches.
+
+```js
+it('will fail every time', () => {
+  const user = {
+    createdAt: new Date(),
+    id: Math.floor(Math.random() * 20),
+    name: 'LeBron James',
+  };
+
+  expect(user).toMatchSnapshot();
+});
+
+// Snapshot
+exports[`will fail every time 1`] = `
+{
+  "createdAt": 2018-05-19T23:36:09.816Z,
+  "id": 3,
+  "name": "LeBron James",
+}
+`;
+```
+
+Values passed to `matchSnapshot()` will match against the dynamic `Any` type (if correct).
+Other values must be an exact match.
+
+```js
+it('will check the matchers and pass', () => {
+  const user = {
+    createdAt: new Date(),
+    id: Math.floor(Math.random() * 20),
+    name: 'LeBron James',
+  };
+
+  expect(user).toMatchSnapshot({
+    createdAt: expect.any(Date),
+    id: expect.any(Number),
+  });
+});
+
+// Snapshot
+exports[`will check the matchers and pass 1`] = `
+{
+  "createdAt": Any<Date>,
+  "id": Any<Number>,
+  "name": "LeBron James",
+}
+`;
+```
 
 ### GitHub action
 
