@@ -17,6 +17,9 @@ It is a next-generation testing framework, based on Vite, and emphasizes speed.
 - Supports TypeScript
 - (mostly) compatible with Jest API
 
+> [!WARNING]
+> [Vite CJS Node API deprecated](https://vitejs.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated)
+
 ### Vitest vs. Jest
 
 - if your project uses Vite, Vitest can re-use the same pipeline
