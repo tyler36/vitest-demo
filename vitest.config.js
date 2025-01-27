@@ -12,6 +12,12 @@ export default defineConfig({
       reporter: ['text', 'json-summary', 'json', 'html'],
       reportOnFailure: true,
       reportsDirectory: './logs/coverage', // Add this line
+      thresholds: {
+        lines: 80,
+        branches: 80,
+        functions: 80,
+        statements: 80
+      }
     },
   },
 })
