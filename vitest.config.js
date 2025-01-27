@@ -9,8 +9,15 @@ export default defineConfig({
     },
     coverage: {
       // 'json-summary' is required for Github action
-      reporter: ['text', 'json-summary', 'json'],
+      reporter: ['text', 'json-summary', 'json', 'html'],
       reportOnFailure: true,
+      reportsDirectory: './logs/coverage', // Add this line
+      thresholds: {
+        lines: 80,
+        branches: 80,
+        functions: 80,
+        statements: 80
+      }
     },
   },
 })
