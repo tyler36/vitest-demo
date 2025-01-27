@@ -7,6 +7,6 @@
   "devDependencies": {
     "@vitest/coverage-v8": "^3.0.4",
     "vitest": "^3.0.4",
-    "vitest-fetch-mock": "^0.3.0"
+    "vitest-fetch-mock": "^0.4.3"
   }
 }
