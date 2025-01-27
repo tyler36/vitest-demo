@@ -11,6 +11,7 @@ export default defineConfig({
       // 'json-summary' is required for Github action
       reporter: ['text', 'json-summary', 'json'],
       reportOnFailure: true,
+      reportsDirectory: './logs/coverage', // Add this line
     },
   },
 })
