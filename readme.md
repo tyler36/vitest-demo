@@ -1,3 +1,6 @@
+[![Testing](https://github.com/tyler36/vitest-demo/actions/workflows/vitest.yml/badge.svg)](https://github.com/tyler36/vitest-demo/actions/workflows/vitest.yml)
+[![Dependabot Updates](https://github.com/tyler36/vitest-demo/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/tyler36/vitest-demo/actions/workflows/dependabot/dependabot-updates)
+
 # Vitest <!-- omit in toc -->
 
 - [Overview](#overview)
