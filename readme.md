@@ -1,3 +1,5 @@
+[![Testing](https://github.com/tyler36/vitest-demo/actions/workflows/vitest.yml/badge.svg)](https://github.com/tyler36/vitest-demo/actions/workflows/vitest.yml)
+
 # Vitest <!-- omit in toc -->
 
 - [Overview](#overview)
