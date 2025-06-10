@@ -22,7 +22,7 @@ jobs:
         uses: lewagon/wait-on-check-action@v1.3.4
         with:
           ref: ${{ github.ref }}
-          running-workflow-name: 'Auto-merge Dependabot'
+          check-name: 'test'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 30
       - name: "🤖 Dependabot metadata"
