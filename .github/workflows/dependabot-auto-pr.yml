@@ -14,10 +14,17 @@ jobs:
   # Require status checks to pass before merging for the target branch for Dependabot pull requests.
   # This job should only be on projects with comprehensive testing.
   dependabot:
+    name: 'Auto-merge Dependabot'
     runs-on: ubuntu-latest
     if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == github.event.pull_request.head.repo.full_name
     steps:
-
+      - name: Wait for tests to succeed
+        uses: lewagon/wait-on-check-action@v1.3.4
+        with:
+          ref: ${{ github.ref }}
+          running-workflow-name: 'Auto-merge Dependabot'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 30
       - name: "🤖 Dependabot metadata"
         id: metadata
         uses: dependabot/fetch-metadata@v2.4.0
