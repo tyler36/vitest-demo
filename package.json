@@ -5,7 +5,7 @@
     "test:coverage": "vitest run --coverage --coverage.reportOnFailure"
   },
   "devDependencies": {
-    "@vitest/coverage-v8": "^4.0.8",
+    "@vitest/coverage-v8": "^4.0.10",
     "vitest": "^4.0.4",
     "vitest-fetch-mock": "^0.4.5"
   }
